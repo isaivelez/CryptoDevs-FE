@@ -28,6 +28,7 @@ const UserSearch = () => {
     } catch (err) {
       console.log(err)
       setError(err?.response?.data?.detail || 'Error al buscar el usuario');
+      setUser(null);
     } finally {
       setLoading(false);
     }
@@ -39,21 +40,8 @@ const UserSearch = () => {
     setError(null);
   };
 
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[400px]">
-        <Spinner size="lg" />
-        <p className="mt-4 text-primary">Buscando empleado...</p>
-      </div>
-    );
-  }
-
-  if (user) {
-    return <UserCard user={user} onBack={handleReset} />;
-  }
-
   return (
-    <>
+    <div className="flex flex-col items-center gap-8 w-full">
       <form onSubmit={handleSubmit} className="w-full max-w-md">
         <div className="flex flex-col gap-6">
           <h2 className="text-2xl font-semibold text-white">Buscar empleado</h2>
@@ -77,6 +65,19 @@ const UserSearch = () => {
         </div>
       </form>
 
+      {loading && (
+        <div className="flex flex-col items-center justify-center py-8">
+          <Spinner size="lg" />
+          <p className="mt-4 text-primary">Buscando empleado...</p>
+        </div>
+      )}
+
+      {user && (
+        <div className="w-full max-w-md">
+          <UserCard user={user} onBack={handleReset} />
+        </div>
+      )}
+
       {error && (
         <Toast 
           message={error} 
@@ -84,7 +85,7 @@ const UserSearch = () => {
           onClose={() => setError(null)}
         />
       )}
-    </>
+    </div>
   );
 };
 

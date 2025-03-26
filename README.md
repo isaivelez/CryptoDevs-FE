@@ -1,12 +1,71 @@
-# React + Vite
+# Sistema de Control de Acceso Empresarial
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un sistema de control de ingresos y salidas de empleados y visitantes para empresas. Permite gestionar y monitorear el flujo de personas dentro de las instalaciones de manera eficiente y segura.
 
-Currently, two official plugins are available:
+## Características Principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Registro de empleados y visitantes
+- Control de entradas y salidas
+- Búsqueda rápida por número de documento
+- Interfaz moderna y responsiva
+- Estadísticas de acceso por usuario
 
-## Expanding the ESLint configuration
+## Tecnologías Utilizadas
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js
+- Tailwind CSS
+- Axios
+- Vite
+- SASS
+
+## Requisitos Previos
+
+- Node.js (v16 o superior)
+- npm o yarn
+- Backend del sistema corriendo en localhost:8000
+
+## Instalación
+
+1. Clonar el repositorio:
+
+```bash
+git clone <url-del-repositorio>
+cd crypto-devs-fe
+```
+
+2. Instalar dependencias:
+
+```bash
+npm install
+# o
+yarn install
+```
+
+3. Iniciar el servidor de desarrollo:
+
+```bash
+npm run dev
+# o
+yarn dev
+```
+
+El proyecto estará disponible en `http://localhost:62902/`
+
+## Scripts Disponibles
+
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye la aplicación para producción
+- `npm run preview` - Previsualiza la versión de producción localmente
+
+## Estructura del Proyecto
+
+```
+crypto-devs-fe/
+├── src/
+│   ├── components/     # Componentes React
+│   ├── styles/        # Estilos SASS
+│   ├── App.jsx        # Componente principal
+│   └── main.jsx       # Punto de entrada
+├── public/            # Archivos estáticos
+└── package.json       # Dependencias y scripts
+```
