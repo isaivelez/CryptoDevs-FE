@@ -18,7 +18,7 @@ const UsersTable = () => {
       setUsers(response.data);
       setError(null);
     } catch (err) {
-      setError('Error fetching users');
+      setError('Error al cargar usuarios');
     } finally {
       setLoading(false);
     }
@@ -28,56 +28,79 @@ const UsersTable = () => {
     return (
       <div className="flex flex-col justify-center items-center min-h-[400px] gap-4">
         <Spinner size="lg" />
-        <div className="text-primary font-medium">Loading users...</div>
+        <p className="text-primary">Cargando usuarios...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex flex-col items-center gap-4 min-h-[400px] justify-center">
-        <div className="text-red-500">{error}</div>
-        <Button variant="primary" onClick={fetchUsers}>
-          Retry
+      <div className="text-center text-red-500">
+        {error}
+        <Button onClick={fetchUsers} variant="secondary" className="mt-4">
+          Reintentar
         </Button>
       </div>
     );
   }
 
   return (
-    <div className="bg-dark-800 rounded-lg shadow overflow-hidden">
-      <table className="min-w-full divide-y divide-dark-700">
-        <thead className="bg-dark-700">
-          <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-dark-300 uppercase tracking-wider">
-              Name
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-dark-300 uppercase tracking-wider">
-              Email
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-dark-300 uppercase tracking-wider">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-dark-800 divide-y divide-dark-700">
-          {users.map((user) => (
-            <tr key={user.id} className="hover:bg-dark-700 transition-colors">
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
-                {user.first_name} {user.last_name}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
-                {user.email}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                <Button variant="ghost" size="sm">
-                  Edit
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+        <h2 className="text-xl sm:text-2xl font-semibold">Lista de Usuarios</h2>
+        <Button variant="primary" size="sm">
+          Exportar
+        </Button>
+      </div>
+
+      <div className="bg-dark-800 shadow-lg rounded-lg overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-dark-600">
+            <thead className="bg-dark-700">
+              <tr>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                  Documento
+                </th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                  Nombre
+                </th>
+                <th className="hidden sm:table-cell px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                  Correo
+                </th>
+                <th className="hidden md:table-cell px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                  Rol
+                </th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                  Estado
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-dark-800 divide-y divide-dark-600">
+              {users.map((user) => (
+                <tr key={user.id} className="hover:bg-dark-700">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm">
+                    {user.document_number}
+                  </td>
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm">
+                    {user.first_name} {user.last_name}
+                  </td>
+                  <td className="hidden sm:table-cell px-6 py-4 whitespace-nowrap text-sm">
+                    {user.email}
+                  </td>
+                  <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm">
+                    Acciones
+                  </td>
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+                    <Button variant="ghost" size="sm">
+                      Editar
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
