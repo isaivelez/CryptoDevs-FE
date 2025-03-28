@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
-import Button from './Button';
-import Spinner from './Spinner';
-import Toast from './Toast';
-import UserCard from './UserCard';
+import Button from '../../core/design-system/Button';
+import Spinner from '../../core/design-system/Spinner';
+import Toast from '../../core/design-system/Toast';
+import UserCard from '../../employees/components/UserCard';
 
-const UserSearch = () => {
+const VisitorSearch = () => {
   const [documentNumber, setDocumentNumber] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [user, setUser] = useState(null);
+  const [visitor, setVisitor] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,19 +23,19 @@ const UserSearch = () => {
     setError(null);
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/users/${documentNumber}`);
-      setUser(response.data);
+      const response = await axios.get(`http://127.0.0.1:8000/visitors/${documentNumber}`);
+      setVisitor(response.data);
     } catch (err) {
       console.log(err)
-      setError(err?.response?.data?.detail || 'Error al buscar el usuario');
-      setUser(null);
+      setError(err?.response?.data?.detail || 'Error al buscar el visitante');
+      setVisitor(null);
     } finally {
       setLoading(false);
     }
   };
 
   const handleReset = () => {
-    setUser(null);
+    setVisitor(null);
     setDocumentNumber('');
     setError(null);
   };
@@ -45,7 +45,7 @@ const UserSearch = () => {
       <form onSubmit={handleSubmit} className="w-full max-w-md">
         <div className="flex flex-col gap-6">
           <h2 className="text-xl sm:text-2xl font-semibold text-white text-center sm:text-left">
-            Buscar Empleado
+            Buscar Visitante
           </h2>
           
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
@@ -66,7 +66,7 @@ const UserSearch = () => {
           </div>
           
           <p className="text-sm text-dark-400 text-center sm:text-left">
-            Ingrese un documento para obtener las estadísticas de ese empleado.
+            Ingrese un documento para obtener las estadísticas de ese visitante.
           </p>
         </div>
       </form>
@@ -74,13 +74,13 @@ const UserSearch = () => {
       {loading && (
         <div className="flex flex-col items-center justify-center py-8">
           <Spinner size="lg" />
-          <p className="mt-4 text-primary">Buscando empleado...</p>
+          <p className="mt-4 text-primary">Buscando visitante...</p>
         </div>
       )}
 
-      {user && (
+      {visitor && (
         <div className="w-full max-w-md">
-          <UserCard user={user} onBack={handleReset} />
+          <UserCard user={visitor} onBack={handleReset} />
         </div>
       )}
 
@@ -95,4 +95,4 @@ const UserSearch = () => {
   );
 };
 
-export default UserSearch;
+export default VisitorSearch;

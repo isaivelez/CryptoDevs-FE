@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Button from './Button';
-import Spinner from './Spinner';
+import Button from '../../core/design-system/Button';
+import Spinner from '../../core/design-system/Spinner';
 
 const UsersTable = () => {
   const [users, setUsers] = useState([]);
@@ -68,7 +68,7 @@ const UsersTable = () => {
                   Correo
                 </th>
                 <th className="hidden md:table-cell px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                  Rol
+                  Tipo
                 </th>
                 <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                   Estado
@@ -88,7 +88,7 @@ const UsersTable = () => {
                     {user.email}
                   </td>
                   <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm">
-                    Acciones
+                    {user.user_type}
                   </td>
                   <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <Button variant="ghost" size="sm">

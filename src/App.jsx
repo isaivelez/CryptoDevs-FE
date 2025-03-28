@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import Header from './components/Header';
-import Dashboard from './components/Dashboard';
-import UserSearch from './components/UserSearch';
+import { AuthProvider } from './modules/auth/context/AuthContext';
+import Header from './modules/core/components/Header';
+import Dashboard from './routes/Dashboard';
+import UserSearch from './modules/employees/components/UserSearch';
 import './styles/main.scss';
 
 function App() {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Button from './Button';
-import Toast from './Toast';
+import Button from '../../core/design-system/Button';
+import Toast from '../../core/design-system/Toast';
 import { useAuth } from '../context/AuthContext';
 
 const LoginForm = ({ onClose }) => {
