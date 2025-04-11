@@ -13,7 +13,6 @@ const AccessLogModal = ({ isOpen, onClose, accessType }) => {
 
   const handleDocumentChange = (e) => {
     const value = e.target.value;
-    // Only allow numbers
     if (value === '' || /^\d+$/.test(value)) {
       setDocumentNumber(value);
       setError('');

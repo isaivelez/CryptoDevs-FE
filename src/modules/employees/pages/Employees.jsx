@@ -5,6 +5,7 @@ import AccessLogModal from '../components/AccessLogModal';
 import { HiOutlineLogin, HiOutlineLogout, HiOutlineUserAdd, HiOutlineUsers } from 'react-icons/hi';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TrialBanner from '../../core/design-system/TrialBanner';
 
 const Employees = () => {
   const [showEntryModal, setShowEntryModal] = useState(false);
@@ -47,14 +48,12 @@ const Employees = () => {
         </ClickableCard>
       </div>
 
-      {/* Entry Modal */}
       <AccessLogModal 
         isOpen={showEntryModal}
         onClose={() => setShowEntryModal(false)}
         accessType="entry"
       />
 
-      {/* Exit Modal */}
       <AccessLogModal 
         isOpen={showExitModal}
         onClose={() => setShowExitModal(false)}

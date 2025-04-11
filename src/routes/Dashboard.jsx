@@ -4,6 +4,8 @@ import { useAuth } from '../modules/auth/context/AuthContext';
 import RegisterEmployee from '../modules/employees/pages/RegisterEmployee';
 import ManageEmployees from '../modules/employees/pages/ManageEmployees';
 import Employees from '../modules/employees/pages/Employees';
+import Reports from '../modules/reports/pages/Reports.jsx';
+import ReportTables from '../modules/reports/pages/ReportTables.jsx';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -19,7 +21,8 @@ const Dashboard = () => {
         <Route path='/visitantes' element={<VisitorSearch />} />
         <Route path='/registrar-empleado' element={<RegisterEmployee />} />
         <Route path='/administrar-empleados' element={<ManageEmployees />} />
-        <Route path='/reportes' element={<div className='text-white'>Reportes - contenido por definir</div>} />
+        <Route path='/reportes' element={<Reports />} />
+        <Route path='/reportes/tablas' element={<ReportTables />} />
         <Route path='*' element={<Navigate to='/dashboard/empleados' replace />} />
       </Routes>
     </div>
