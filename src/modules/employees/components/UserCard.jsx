@@ -2,6 +2,7 @@ const UserCard = ({ user, onBack }) => {
   return (
     <div className="w-full max-w-md bg-dark-800 rounded-xl shadow-lg overflow-hidden">
       <div className="px-6 py-4">
+        
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-semibold text-white">User Information</h3>
           <button
