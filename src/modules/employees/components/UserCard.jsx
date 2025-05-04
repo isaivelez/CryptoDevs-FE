@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+import { HiOutlineQrcode } from 'react-icons/hi';
+
 const UserCard = ({ user, onBack }) => {
+  const navigate = useNavigate();
   return (
     <div className="w-full max-w-md bg-dark-800 rounded-xl shadow-lg overflow-hidden">
       <div className="px-6 py-4">
@@ -34,11 +38,21 @@ const UserCard = ({ user, onBack }) => {
       </div>
       
       <div className="px-6 py-4 bg-dark-700">
-        <div className="flex items-center space-x-2">
-          <div className={`w-2 h-2 rounded-full ${user.active ? 'bg-primary' : 'bg-red-500'}`} />
-          <span className="text-dark-300">
-            {user.active ? 'Active User' : 'Inactive User'}
-          </span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <div className={`w-2 h-2 rounded-full ${user.active ? 'bg-primary' : 'bg-red-500'}`} />
+            <span className="text-dark-300">
+              {user.active ? 'Active User' : 'Inactive User'}
+            </span>
+          </div>
+          
+          <button
+            onClick={() => navigate(`/dashboard/qr-generator/empleado/${user.id}`)}
+            className="flex items-center space-x-2 px-3 py-1 bg-primary text-white rounded-md hover:bg-primary-600 transition-colors"
+          >
+            <HiOutlineQrcode className="w-5 h-5" />
+            <span>Generate QR</span>
+          </button>
         </div>
       </div>
     </div>

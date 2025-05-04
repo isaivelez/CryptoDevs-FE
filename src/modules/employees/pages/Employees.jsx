@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import UserSearch from '../components/UserSearch';
 import ClickableCard from '../../core/design-system/ClickableCard';
 import AccessLogModal from '../components/AccessLogModal';
-import { HiOutlineLogin, HiOutlineLogout, HiOutlineUserAdd, HiOutlineUsers } from 'react-icons/hi';
+import { HiOutlineLogin, HiOutlineLogout, HiOutlineUserAdd, HiOutlineUsers, HiOutlineQrcode } from 'react-icons/hi';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import TrialBanner from '../../core/design-system/TrialBanner';
@@ -29,6 +29,15 @@ const Employees = () => {
           icon={HiOutlineLogout}
         >
           Registrar salida
+        </ClickableCard>
+      </div>
+      <div className='grid grid-cols-1 sm:grid-cols-1 gap-6 mt-6 px-4'>
+        <ClickableCard 
+          redirectTo="/dashboard/qr-scanner" 
+          description="Escanear y generar códigos QR para control de acceso"
+          icon={HiOutlineQrcode}
+        >
+          Control de Acceso QR
         </ClickableCard>
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4'>

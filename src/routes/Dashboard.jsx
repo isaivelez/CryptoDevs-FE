@@ -6,6 +6,8 @@ import ManageEmployees from '../modules/employees/pages/ManageEmployees';
 import Employees from '../modules/employees/pages/Employees';
 import Reports from '../modules/reports/pages/Reports.jsx';
 import ReportTables from '../modules/reports/pages/ReportTables.jsx';
+import QRCodeModule from '../modules/qr-scanner/QRCodeModule';
+import QRGenerator from '../modules/qr-scanner/QRGenerator';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -23,6 +25,8 @@ const Dashboard = () => {
         <Route path='/administrar-empleados' element={<ManageEmployees />} />
         <Route path='/reportes' element={<Reports />} />
         <Route path='/reportes/tablas' element={<ReportTables />} />
+        <Route path='/qr-scanner' element={<QRCodeModule />} />
+        <Route path='/qr-generator/:type/:id' element={<QRGenerator />} />
         <Route path='*' element={<Navigate to='/dashboard/empleados' replace />} />
       </Routes>
     </div>
